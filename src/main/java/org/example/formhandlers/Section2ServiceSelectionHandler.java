@@ -315,9 +315,14 @@ public class Section2ServiceSelectionHandler implements IFormHandler {
         AtomicInteger i = new AtomicInteger();
         wait.until(__ -> {
             i.getAndIncrement();
-            logger.info("iteration: " + i);
+            logger.info("verifyFormSubmission: iteration: " + i);
             boolean result = isErrorMessageShow() || isDateSelectionOpened();
+            logger.info("verifyFormSubmission Result: " + result);
             logger.info("\n");
+            if (!result)
+            {
+                sendForm();
+            }
             return result;
         });
     }
