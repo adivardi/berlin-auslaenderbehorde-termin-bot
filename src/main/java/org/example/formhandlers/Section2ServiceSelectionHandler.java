@@ -154,6 +154,7 @@ public class Section2ServiceSelectionHandler implements IFormHandler {
                 WebElement element = driver.findElement(By.cssSelector("select[name='personenAnzahl_normal']"));
                 Select select = new Select(element);
                 select.selectByVisibleText(applicantNumber);
+                logger.debug("Successfully selected the number of applicants");
                 return true;
             } catch (Exception exception) {
                 return false;
@@ -174,6 +175,7 @@ public class Section2ServiceSelectionHandler implements IFormHandler {
                 WebElement webElement = driver.findElement(By.cssSelector("select[name='lebnBrMitFmly']"));
                 Select select = new Select(webElement);
                 select.selectByVisibleText(familyStatus);
+                logger.debug("Successfully selected the family status");
                 return true;
             } catch (Exception e) {
                 return false;
@@ -245,6 +247,7 @@ public class Section2ServiceSelectionHandler implements IFormHandler {
     protected void sendForm() {
         String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
         logger.debug("Starting to " + methodName);
+        logger.debug("sendForm");
         String elementXpath = "//*[@id=\"applicationForm:managedForm:proceed\"]";
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT_FOR_INTERACTING_WITH_ELEMENT_IN_SECONDS));
         wait.until(__ -> {
